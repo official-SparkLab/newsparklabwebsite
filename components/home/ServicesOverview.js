@@ -48,7 +48,7 @@ export default function ServicesOverview() {
     <section className="section-padding gradient-bg">
       <div className="container-custom">
         <SectionTitle
-          title="Our Services"
+          title="Our Offering"
           subtitle="What We Offer"
           center
           className="mb-16"
