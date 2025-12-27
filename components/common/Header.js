@@ -65,9 +65,12 @@ export default function Header() {
 
   const resourcesLinks = [
     { name: 'Innovation Playground', href: '/innovation-playground/', icon: '🎮', description: 'Interactive demos & experiments' },
+    { name: 'Code & See', href: '/code-and-see/', icon: '💻', description: 'Live coding playground' },
     { name: 'IT Without Headache', href: '/it-without-headache/', icon: '📚', description: 'Learn IT concepts simply' },
     { name: 'Try IT Yourself', href: '/try-it-yourself/', icon: '🛠️', description: 'Interactive tools & calculators' },
     { name: 'Website Readiness Quiz', href: '/website-readiness-quiz/', icon: '🎯', description: 'Find your perfect solution' },
+    { name: 'Website Health Check', href: '/website-health-check/', icon: '🔍', description: 'Analyze website performance' },
+    { name: 'IT Myth Busters', href: '/it-myth-busters/', icon: '💥', description: 'Break common misconceptions' },
   ]
 
   const isActive = (href) => {
