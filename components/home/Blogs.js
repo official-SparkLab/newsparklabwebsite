@@ -70,7 +70,7 @@ export default function Blogs() {
               >
                 <div className="relative h-48 bg-gradient-to-br from-primary-100 to-primary-200 overflow-hidden">
                   <div className="absolute top-4 left-4">
-                    <span className="inline-block px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-primary-700">
+                    <span className="inline-block px-3 py-1 bg-white/90 rounded-full text-xs font-semibold text-primary-700">
                       {blog.category}
                     </span>
                   </div>

@@ -39,10 +39,17 @@ export default function ProductsOverview() {
           {products.map((product, index) => (
             <motion.div
               key={product.name}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ 
+                duration: 0.5, 
+                delay: index * 0.1
+              }}
+              whileHover={{ 
+                y: -5,
+                transition: { duration: 0.2 }
+              }}
               className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-8 border-2 border-gray-200 hover:border-accent-400 hover:shadow-xl transition-all duration-300 group"
             >
               <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg mb-4 flex items-center justify-center group-hover:scale-110 group-hover:from-accent-500 group-hover:to-accent-600 transition-all duration-300 shadow-md">
@@ -56,7 +63,9 @@ export default function ProductsOverview() {
               <h3 className="text-xl font-bold text-gray-900 mt-2 mb-3 group-hover:text-primary-700 transition-colors">
                 {product.name}
               </h3>
-              <p className="text-gray-600 mb-4">{product.description}</p>
+              <p className="text-gray-600 mb-4">
+                {product.description}
+              </p>
               <Link
                 href="/products/"
                 className="text-primary-600 font-semibold hover:text-accent-600 transition-colors text-sm inline-flex items-center group/link"

@@ -70,7 +70,7 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-white shadow-lg py-2'
-          : 'bg-white/95 backdrop-blur-sm py-2.5'
+          : 'bg-white py-2.5'
       }`}
     >
       <nav className="container-custom">
@@ -120,25 +120,54 @@ export default function Header() {
             {navLinks.map((link) => {
               const active = isActive(link.href)
               return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`relative font-medium text-sm transition-all duration-200 whitespace-nowrap px-3 py-2 rounded-md ${
-                    active
-                      ? 'text-primary-600 bg-primary-50'
-                      : 'text-gray-700 hover:text-accent-600 hover:bg-gray-50'
-                  }`}
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {link.name}
-                  {active && (
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-accent-500 rounded-full"
-                      initial={false}
-                      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                    />
-                  )}
-                </Link>
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`relative font-medium text-sm transition-all duration-200 whitespace-nowrap px-3 py-2 rounded-md ${
+                      active
+                        ? 'text-primary-600 bg-primary-50'
+                        : 'text-gray-700 hover:text-accent-600 hover:bg-gray-50'
+                    }`}
+                  >
+                    <motion.span
+                      whileHover={{ 
+                        scale: 1.1,
+                        textShadow: '0 0 8px rgba(14, 165, 233, 0.3)',
+                      }}
+                    >
+                      {link.name}
+                    </motion.span>
+                    {active && (
+                      <motion.div
+                        layoutId="activeIndicator"
+                        className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-accent-500 rounded-full"
+                        initial={false}
+                        layout
+                        animate={{
+                          scale: [1, 1.3, 1],
+                          opacity: [0.8, 1, 0.8],
+                        }}
+                        transition={{
+                          layout: { type: 'spring', stiffness: 500, damping: 30 },
+                          scale: {
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: 'easeInOut',
+                          },
+                          opacity: {
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: 'easeInOut',
+                          },
+                        }}
+                      />
+                    )}
+                  </Link>
+                </motion.div>
               )
             })}
           </div>

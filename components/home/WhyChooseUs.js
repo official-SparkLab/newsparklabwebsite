@@ -60,13 +60,21 @@ export default function WhyChooseUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+              whileHover={{ 
+                y: -5,
+                transition: { duration: 0.2 }
+              }}
+              className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300 group"
             >
-              <div className="text-3xl mb-4">{feature.icon}</div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
+              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                {feature.icon}
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary-700 transition-colors">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 text-sm">{feature.description}</p>
+              <p className="text-gray-600 text-sm">
+                {feature.description}
+              </p>
             </motion.div>
           ))}
         </div>

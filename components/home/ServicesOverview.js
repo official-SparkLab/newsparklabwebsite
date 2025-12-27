@@ -60,14 +60,25 @@ export default function ServicesOverview() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ 
+                duration: 0.5, 
+                delay: index * 0.1
+              }}
+              whileHover={{ 
+                y: -5,
+                transition: { duration: 0.2 }
+              }}
               className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-300 border-l-4 border-transparent hover:border-accent-500 group"
             >
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{service.icon}</div>
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                {service.icon}
+              </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors">
                 {service.title}
               </h3>
-              <p className="text-gray-600 mb-4">{service.description}</p>
+              <p className="text-gray-600 mb-4">
+                {service.description}
+              </p>
               <Link
                 href="/services/"
                 className="text-primary-600 font-semibold hover:text-accent-600 transition-colors text-sm inline-flex items-center group/link"

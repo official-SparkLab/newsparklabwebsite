@@ -11,8 +11,8 @@ export default function Products() {
     <>
       <div className="pt-24 pb-16 gradient-bg">
         <div className="container-custom text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-primary-700 to-accent-600 bg-clip-text text-transparent">Explore Our Products</span>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Explore Our Products
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             A comprehensive suite of enterprise software solutions to transform the way you work

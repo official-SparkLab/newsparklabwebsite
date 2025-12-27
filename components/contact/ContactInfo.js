@@ -42,10 +42,16 @@ export default function ContactInfo() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: index * 0.1 }}
-          className="bg-white rounded-xl p-6 shadow-md"
+          whileHover={{ 
+            y: -5,
+            transition: { duration: 0.2 }
+          }}
+          className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300"
         >
           <div className="flex items-start">
-            <div className="text-3xl mr-4">{item.icon}</div>
+            <div className="text-3xl mr-4 group-hover:scale-110 transition-transform duration-300">
+              {item.icon}
+            </div>
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">
                 {item.title}

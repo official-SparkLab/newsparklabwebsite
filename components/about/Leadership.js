@@ -45,9 +45,13 @@ export default function Leadership() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ 
+                y: -5,
+                transition: { duration: 0.2 }
+              }}
               className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow text-center"
             >
-              <div className="w-24 h-24 bg-gradient-to-br from-primary-500 to-primary-700 rounded-full mx-auto mb-4 flex items-center justify-center shadow-md">
+              <div className="w-24 h-24 bg-gradient-to-br from-primary-500 to-primary-700 rounded-full mx-auto mb-4 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
                 <span className="text-white font-bold text-2xl">
                   {leader.name.charAt(0)}
                 </span>
