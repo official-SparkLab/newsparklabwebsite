@@ -19,10 +19,33 @@ export default function TrustedBy() {
 
   return (
     <section className="section-padding bg-gradient-to-br from-gray-50 via-white to-primary-50/30 relative overflow-hidden">
-      {/* Decorative background elements */}
+      {/* Enhanced Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-200/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-200/10 rounded-full blur-3xl"></div>
+        <motion.div 
+          className="absolute top-0 left-1/4 w-96 h-96 bg-primary-200/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-200/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 1,
+          }}
+        />
       </div>
 
       <div className="container-custom relative z-10">

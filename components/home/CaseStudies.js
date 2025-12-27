@@ -63,7 +63,7 @@ export default function CaseStudies() {
                 <div className="relative h-64 bg-gradient-to-br from-primary-100 to-primary-200 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 right-4">
-                    <span className="inline-block px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-primary-700 mb-2">
+                    <span className="inline-block px-3 py-1 bg-white/90 rounded-full text-xs font-semibold text-primary-700 mb-2">
                       {study.smallHeading}
                     </span>
                     <h3 className="text-xl font-bold text-white">

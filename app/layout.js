@@ -1,6 +1,7 @@
 import './globals.css'
 import Header from '@/components/common/Header'
 import Footer from '@/components/common/Footer'
+import ScrollProgress from '@/components/common/ScrollProgress'
 
 export const metadata = {
   title: 'SparkLab - Enterprise IT Solutions & Software Development',
@@ -12,6 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="antialiased">
+        <ScrollProgress />
         <Header />
         <main className="min-h-screen">
           {children}

@@ -37,6 +37,7 @@ export default function ProcessFlow() {
 
   return (
     <section className="section-padding bg-white">
+
       <div className="container-custom">
         <SectionTitle
           title="Work Process"
@@ -65,11 +66,15 @@ export default function ProcessFlow() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ 
+                y: -5,
+                transition: { duration: 0.2 }
+              }}
               className="relative"
             >
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-24 left-full w-full h-0.5 bg-gradient-to-r from-primary-300 to-primary-400 -z-10">
-                  <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-primary-600 rounded-full shadow-md group-hover:bg-accent-500 transition-colors"></div>
+                  <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-primary-600 rounded-full shadow-md"></div>
                 </div>
               )}
               <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-primary-300 group">

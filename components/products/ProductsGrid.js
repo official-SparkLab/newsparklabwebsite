@@ -15,50 +15,116 @@ export default function ProductsGrid() {
         {featuredProducts.map((product, index) => (
           <motion.div
             key={product.slug}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ 
+              duration: 0.6, 
+              delay: index * 0.15,
+              type: 'spring',
+              stiffness: 100
+            }}
+            whileHover={{ 
+              y: -10,
+              scale: 1.02,
+              transition: { duration: 0.3 }
+            }}
+            whileTap={{ scale: 0.98 }}
             className="group"
           >
             <Link
               href={`/products/${product.slug}/`}
-              className="block bg-white rounded-xl border-2 border-gray-200 hover:border-accent-400 hover:shadow-xl transition-all duration-300 overflow-hidden h-full"
+              className="block bg-white rounded-xl border-2 border-gray-200 hover:border-accent-400 hover:shadow-2xl transition-all duration-300 overflow-hidden h-full relative"
             >
-              <div className="p-8">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:from-accent-500 group-hover:to-accent-600 transition-all duration-300 shadow-md">
+              {/* Glow effect */}
+              <motion.div
+                className="absolute -inset-0.5 bg-gradient-to-r from-primary-400 via-accent-400 to-primary-400 rounded-xl opacity-0 group-hover:opacity-20 blur-xl -z-10 transition-opacity duration-300"
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+                style={{
+                  backgroundSize: '200% 100%',
+                }}
+              />
+              <div className="p-8 relative z-10">
+                <motion.div 
+                  className="flex items-center justify-between mb-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15 + 0.2 }}
+                >
+                  <motion.div 
+                    className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-md relative z-10"
+                    whileHover={{ 
+                      scale: 1.2,
+                      rotate: 360,
+                      background: 'linear-gradient(to bottom right, #f59e0b, #d97706)',
+                    }}
+                    transition={{ duration: 0.5 }}
+                  >
                     <span className="text-4xl">{product.icon}</span>
-                  </div>
-                  <span className="px-3 py-1.5 bg-primary-50 text-primary-700 rounded-lg text-xs font-semibold uppercase tracking-wide">
+                  </motion.div>
+                  <motion.span 
+                    className="px-3 py-1.5 bg-primary-50 text-primary-700 rounded-lg text-xs font-semibold uppercase tracking-wide"
+                    whileHover={{ scale: 1.05 }}
+                  >
                     {product.category}
-                  </span>
-                </div>
+                  </motion.span>
+                </motion.div>
 
-                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors">
+                <motion.h3 
+                  className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors"
+                  initial={{ x: -10, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15 + 0.3 }}
+                >
                   {product.name}
-                </h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
+                </motion.h3>
+                <motion.p 
+                  className="text-gray-600 leading-relaxed mb-6"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15 + 0.4 }}
+                >
                   {product.description}
-                </p>
+                </motion.p>
 
-                <div className="flex items-center text-primary-600 font-semibold group-hover:text-accent-600 transition-colors">
+                <motion.div 
+                  className="flex items-center text-primary-600 font-semibold group-hover:text-accent-600 transition-colors"
+                  whileHover={{ x: 5 }}
+                  transition={{ type: 'spring', stiffness: 400 }}
+                >
                   <span>Learn More</span>
-                  <svg
-                    className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform text-accent-600"
+                  <motion.svg
+                    className="ml-2 w-5 h-5 text-accent-600"
                     fill="none"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    whileHover={{ x: 5 }}
+                    transition={{ type: 'spring', stiffness: 400 }}
                   >
                     <path d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
+                  </motion.svg>
+                </motion.div>
               </div>
 
-              <div className="h-1 bg-gradient-to-r from-accent-500 to-accent-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              <motion.div 
+                className="h-1 bg-gradient-to-r from-accent-500 to-accent-600 origin-left"
+                initial={{ scaleX: 0 }}
+                whileHover={{ scaleX: 1 }}
+                transition={{ duration: 0.3 }}
+              />
             </Link>
           </motion.div>
         ))}
@@ -81,16 +147,31 @@ export default function ProductsGrid() {
             {remainingProducts.map((product, index) => (
               <motion.div
                 key={product.slug}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.08,
+                  type: 'spring',
+                  stiffness: 100
+                }}
+                whileHover={{ 
+                  y: -8,
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                whileTap={{ scale: 0.98 }}
                 className="group"
               >
                 <Link
                   href={`/products/${product.slug}/`}
-                  className="block bg-white rounded-lg border-2 border-gray-200 hover:border-accent-300 hover:shadow-lg transition-all duration-300 p-6 h-full"
+                  className="block bg-white rounded-lg border-2 border-gray-200 hover:border-accent-300 hover:shadow-xl transition-all duration-300 p-6 h-full relative overflow-hidden"
                 >
+                  {/* Glow effect */}
+                  <motion.div
+                    className="absolute -inset-0.5 bg-gradient-to-r from-primary-400 to-accent-400 rounded-lg opacity-0 group-hover:opacity-20 blur-lg -z-10 transition-opacity duration-300"
+                  />
                   <div className="flex items-start space-x-4">
                     <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:from-accent-500 group-hover:to-accent-600 transition-all duration-300 shadow-md">
                       <span className="text-3xl">{product.icon}</span>

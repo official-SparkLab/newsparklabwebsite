@@ -12,6 +12,10 @@ export default function VisionMission() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            whileHover={{ 
+              y: -5,
+              transition: { duration: 0.2 }
+            }}
             className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-xl p-8 border-l-4 border-primary-500 hover:border-accent-500 transition-colors"
           >
             <div className="text-4xl mb-4">🎯</div>
@@ -28,6 +32,10 @@ export default function VisionMission() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            whileHover={{ 
+              y: -5,
+              transition: { duration: 0.2 }
+            }}
             className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-8"
           >
             <div className="text-4xl mb-4">🚀</div>
