@@ -25,8 +25,11 @@ export default function Footer() {
       { name: 'Case Studies', href: '/case-studies/' },
       { name: 'Innovation Playground', href: '/innovation-playground/' },
       { name: 'Website Readiness Quiz', href: '/website-readiness-quiz/' },
+      { name: 'Website Health Check', href: '/website-health-check/' },
+      { name: 'Code & See', href: '/code-and-see/' },
       { name: 'IT Without Headache', href: '/it-without-headache/' },
       { name: 'Try IT Yourself', href: '/try-it-yourself/' },
+      { name: 'IT Myth Busters', href: '/it-myth-busters/' },
     ],
   }
 
