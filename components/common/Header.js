@@ -8,8 +8,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isResourcesOpen, setIsResourcesOpen] = useState(false)
   const pathname = usePathname()
   const mobileMenuRef = useRef(null)
+  const resourcesRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,17 +47,27 @@ export default function Header() {
 
   useEffect(() => {
     setIsMobileMenuOpen(false)
+    setIsResourcesOpen(false)
   }, [pathname])
 
-  const navLinks = [
+
+  const mainNavLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about/' },
     { name: 'Services', href: '/services/' },
     { name: 'Products', href: '/products/' },
     { name: 'Solutions', href: '/solutions/' },
     { name: 'Industries', href: '/industries/' },
+    { name: 'Case Studies', href: '/case-studies/' },
     { name: 'Careers', href: '/careers/' },
     { name: 'Contact', href: '/contact/' },
+  ]
+
+  const resourcesLinks = [
+    { name: 'Innovation Playground', href: '/innovation-playground/', icon: '🎮', description: 'Interactive demos & experiments' },
+    { name: 'IT Without Headache', href: '/it-without-headache/', icon: '📚', description: 'Learn IT concepts simply' },
+    { name: 'Try IT Yourself', href: '/try-it-yourself/', icon: '🛠️', description: 'Interactive tools & calculators' },
+    { name: 'Website Readiness Quiz', href: '/website-readiness-quiz/', icon: '🎯', description: 'Find your perfect solution' },
   ]
 
   const isActive = (href) => {
@@ -117,15 +129,15 @@ export default function Header() {
           </Link>
 
           <div className="hidden xl:flex items-center space-x-1 flex-1 justify-center mx-6">
-            {navLinks.map((link) => {
+            {mainNavLinks.map((link) => {
               const active = isActive(link.href)
               return (
                 <motion.div
+                  key={link.name}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <Link
-                    key={link.name}
                     href={link.href}
                     className={`relative font-medium text-sm transition-all duration-200 whitespace-nowrap px-3 py-2 rounded-md ${
                       active
@@ -170,6 +182,72 @@ export default function Header() {
                 </motion.div>
               )
             })}
+            
+            {/* Resources Dropdown */}
+            <div className="relative" ref={resourcesRef}>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setIsResourcesOpen(!isResourcesOpen)}
+                className={`relative font-medium text-sm transition-all duration-200 whitespace-nowrap px-3 py-2 rounded-md flex items-center gap-1 ${
+                  resourcesLinks.some(link => isActive(link.href))
+                    ? 'text-primary-600 bg-primary-50'
+                    : 'text-gray-700 hover:text-accent-600 hover:bg-gray-50'
+                }`}
+              >
+                <span>Resources</span>
+                <motion.svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  animate={{ rotate: isResourcesOpen ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </motion.svg>
+              </motion.button>
+
+              <AnimatePresence>
+                {isResourcesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
+                  >
+                    {resourcesLinks.map((link) => {
+                      const active = isActive(link.href)
+                      return (
+                        <Link
+                          key={link.name}
+                          href={link.href}
+                          onClick={() => setIsResourcesOpen(false)}
+                          className={`block px-4 py-3 hover:bg-gray-50 transition-colors ${
+                            active ? 'bg-primary-50 border-l-4 border-accent-500' : ''
+                          }`}
+                        >
+                          <div className="flex items-start gap-3">
+                            <span className="text-2xl flex-shrink-0">{link.icon}</span>
+                            <div className="flex-1 min-w-0">
+                              <div className={`font-semibold text-sm ${
+                                active ? 'text-primary-600' : 'text-gray-900'
+                              }`}>
+                                {link.name}
+                              </div>
+                              <div className="text-xs text-gray-500 mt-0.5">
+                                {link.description}
+                              </div>
+                            </div>
+                          </div>
+                        </Link>
+                      )
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           <div className="hidden xl:flex items-center space-x-4 flex-shrink-0">
@@ -229,7 +307,7 @@ export default function Header() {
               transition={{ duration: 0.2 }}
               className="xl:hidden mt-3 pb-3 space-y-1 overflow-hidden border-t border-gray-200 pt-3"
             >
-              {navLinks.map((link) => {
+              {mainNavLinks.map((link) => {
                 const active = isActive(link.href)
                 return (
                   <Link
@@ -246,6 +324,33 @@ export default function Header() {
                   </Link>
                 )
               })}
+              
+              {/* Resources Section in Mobile */}
+              <div className="pt-2 mt-2 border-t border-gray-200">
+                <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  Resources
+                </div>
+                {resourcesLinks.map((link) => {
+                  const active = isActive(link.href)
+                  return (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`block py-2.5 px-4 rounded-lg transition-all duration-200 text-sm font-medium ${
+                        active
+                          ? 'bg-primary-50 text-primary-600 font-semibold border-l-4 border-accent-500'
+                          : 'text-gray-700 hover:bg-gray-50 hover:text-accent-600'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span>{link.icon}</span>
+                        <span>{link.name}</span>
+                      </div>
+                    </Link>
+                  )
+                })}
+              </div>
               <div className="pt-3 border-t border-gray-200 mt-2">
                 <div className="flex items-center justify-center space-x-2 text-gray-600 px-4 py-2.5 mb-3">
                   <svg

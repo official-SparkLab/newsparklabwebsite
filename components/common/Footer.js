@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import TechByteOfTheDay from '@/components/common/TechByteOfTheDay'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -21,6 +22,11 @@ export default function Footer() {
       { name: 'Solutions', href: '/solutions/' },
       { name: 'Industries', href: '/industries/' },
       { name: 'Products', href: '/products/' },
+      { name: 'Case Studies', href: '/case-studies/' },
+      { name: 'Innovation Playground', href: '/innovation-playground/' },
+      { name: 'Website Readiness Quiz', href: '/website-readiness-quiz/' },
+      { name: 'IT Without Headache', href: '/it-without-headache/' },
+      { name: 'Try IT Yourself', href: '/try-it-yourself/' },
     ],
   }
 
@@ -158,6 +164,17 @@ export default function Footer() {
             </ul>
           </motion.div>
         </div>
+
+        {/* Tech Byte of the Day */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="mb-8"
+        >
+          <TechByteOfTheDay variant="footer" />
+        </motion.div>
 
         <motion.div 
           className="border-t border-gray-800 pt-8 mt-8"
