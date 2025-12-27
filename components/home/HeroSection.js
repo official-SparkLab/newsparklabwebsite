@@ -1,207 +1,310 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Button from '@/components/common/Button'
 
 export default function HeroSection() {
+  const [typedText, setTypedText] = useState('')
+  const [currentCommand, setCurrentCommand] = useState(0)
+  const [showCursor, setShowCursor] = useState(true)
+
+  const commands = [
+    'npm install growth',
+    'git commit -m "business upgrade"',
+  ]
+
+  const techStack = [
+    { name: 'React', icon: '⚛️' },
+    { name: 'Next.js', icon: '▲' },
+    { name: 'Node.js', icon: '🟢' },
+    { name: 'Cloud', icon: '☁️' },
+    { name: 'TypeScript', icon: '📘' },
+    { name: 'AWS', icon: '☁️' },
+  ]
+
+  useEffect(() => {
+    let timeout
+    const currentCmd = commands[currentCommand]
+    
+    if (typedText.length < currentCmd.length) {
+      timeout = setTimeout(() => {
+        setTypedText(currentCmd.slice(0, typedText.length + 1))
+      }, 100)
+    } else {
+      timeout = setTimeout(() => {
+        setTypedText('')
+        setCurrentCommand((prev) => (prev + 1) % commands.length)
+      }, 3000)
+    }
+
+    return () => clearTimeout(timeout)
+  }, [typedText, currentCommand])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowCursor((prev) => !prev)
+    }, 530)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
-    <section className="relative gradient-bg pt-24 pb-20 md:pt-32 md:pb-32 overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-primary-400/30 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.3, 0.7, 0.3],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-              ease: 'easeInOut',
-            }}
-          />
-        ))}
-        
-        <motion.div
-          className="absolute top-20 left-10 w-96 h-96 bg-primary-300/20 rounded-full blur-3xl"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-accent-400/20 rounded-full blur-3xl"
-          animate={{
-            x: [0, -30, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      {/* Animated Background Grid */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'linear-gradient(rgba(14, 165, 233, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(14, 165, 233, 0.1) 1px, transparent 1px)',
+          backgroundSize: '50px 50px',
+        }} />
       </div>
 
-      <div className="container-custom relative z-10">
+      {/* Floating Particles */}
+      {[...Array(20)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-1 h-1 bg-primary-400 rounded-full"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+          }}
+          animate={{
+            y: [0, -100, 0],
+            opacity: [0.2, 0.8, 0.2],
+            scale: [1, 1.5, 1],
+          }}
+          transition={{
+            duration: 3 + Math.random() * 2,
+            repeat: Infinity,
+            delay: Math.random() * 2,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+
+      {/* Animated Orbs */}
+      <motion.div
+        className="absolute top-20 left-20 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl"
+        animate={{
+          x: [0, 100, 0],
+          y: [0, 50, 0],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
+      <motion.div
+        className="absolute bottom-20 right-20 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl"
+        animate={{
+          x: [0, -80, 0],
+          y: [0, -60, 0],
+          scale: [1, 1.3, 1],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
+
+      <div className="container-custom relative z-10 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Side - Content */}
           <motion.div
-            initial={{ opacity: 0, x: -100, scale: 0.9 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ 
-              duration: 0.8,
-              type: 'spring',
-              stiffness: 100
-            }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+            {/* Tagline */}
+            <motion.h1
+              className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Transform Your Business with
-              <motion.span 
-                className="text-primary-600 inline-block"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                whileHover={{ 
-                  scale: 1.05,
-                  textShadow: '0 0 20px rgba(14, 165, 233, 0.5)',
+              <span className="block">We don't build</span>
+              <motion.span
+                className="block bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent"
+                animate={{
+                  backgroundPosition: ['0%', '100%', '0%'],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+                style={{
+                  backgroundSize: '200%',
                 }}
               >
-                {' '}Enterprise IT Solutions
+                websites.
+              </motion.span>
+              <span className="block">We build digital</span>
+              <motion.span
+                className="block text-primary-400"
+                whileHover={{
+                  scale: 1.05,
+                  textShadow: '0 0 30px rgba(14, 165, 233, 0.5)',
+                }}
+              >
+                experiences.
               </motion.span>
             </motion.h1>
-            <motion.p 
-              className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed"
+
+            {/* CTA Buttons */}
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 mt-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              We deliver cutting-edge software development, cloud services, and
-              digital transformation solutions that drive innovation and growth
-              for businesses worldwide.
-            </motion.p>
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              <Button href="/contact/" size="lg">
-                Get Started
+              <Button href="/about/" size="lg" className="bg-white text-gray-900 hover:bg-gray-100">
+                Explore Our Thinking
               </Button>
               <Button href="/services/" variant="accent" size="lg">
-                Our Services
+                Learn How Tech Works
               </Button>
             </motion.div>
           </motion.div>
 
+          {/* Right Side - Code Terminal & Tech Stack */}
           <motion.div
-            initial={{ opacity: 0, x: 100, scale: 0.9 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ 
-              duration: 0.8, 
-              delay: 0.2,
-              type: 'spring',
-              stiffness: 100
-            }}
-            className="relative"
-            whileHover={{ scale: 1.02 }}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-8"
           >
-            <motion.div 
-              className="relative bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8 shadow-2xl border-2 border-primary-200/50"
-              animate={{
-                boxShadow: [
-                  '0 20px 40px rgba(14, 165, 233, 0.2)',
-                  '0 25px 50px rgba(14, 165, 233, 0.3)',
-                  '0 20px 40px rgba(14, 165, 233, 0.2)',
-                ],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
+            {/* Code Terminal */}
+            <motion.div
+              className="bg-gray-900/90 backdrop-blur-sm rounded-xl p-6 border border-gray-700 shadow-2xl"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
             >
-              {/* Glow effect */}
-              <motion.div
-                className="absolute -inset-1 bg-gradient-to-r from-primary-400 to-accent-400 rounded-2xl blur-xl opacity-0"
-                animate={{
-                  opacity: [0, 0.3, 0],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
-              
-              <div className="grid grid-cols-2 gap-4 relative z-10">
-                {[1, 2, 3, 4].map((item) => (
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                <span className="ml-2 text-gray-400 text-sm">Terminal</span>
+              </div>
+              <div className="font-mono text-sm">
+                <div className="text-gray-500 mb-2">
+                  <span className="text-green-400">$</span> {typedText}
+                  <motion.span
+                    animate={{ opacity: showCursor ? 1 : 0 }}
+                    className="inline-block w-2 h-5 bg-primary-400 ml-1"
+                  />
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Scrolling Tech Stack */}
+            <motion.div
+              className="bg-gray-900/90 backdrop-blur-sm rounded-xl p-6 border border-gray-700 shadow-2xl"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider text-gray-400">
+                Tech Stack
+              </h3>
+              <div className="flex flex-wrap gap-4">
+                {techStack.map((tech, index) => (
                   <motion.div
-                    key={item}
-                    initial={{ opacity: 0, scale: 0.5, rotate: -180 }}
-                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                    transition={{ 
-                      duration: 0.6, 
-                      delay: 0.4 + item * 0.15,
-                      type: 'spring',
-                      stiffness: 200
+                    key={tech.name}
+                    className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 rounded-lg border border-gray-700 cursor-pointer group"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 + index * 0.1 }}
+                    whileHover={{
+                      scale: 1.1,
+                      y: -5,
+                      borderColor: '#0ea5e9',
+                      boxShadow: '0 0 20px rgba(14, 165, 233, 0.3)',
                     }}
-                    whileHover={{ 
-                      scale: 1.1, 
-                      rotate: [0, -5, 5, -5, 0],
-                      zIndex: 10
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-white rounded-lg p-6 shadow-md border border-primary-100 hover:border-primary-300 transition-all cursor-pointer group"
                   >
-                    <motion.div 
-                      className="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-600 rounded-lg mb-3"
-                      whileHover={{ 
-                        rotate: 360,
+                    <motion.span
+                      className="text-2xl"
+                      whileHover={{
                         scale: 1.2,
+                        rotate: [0, -10, 10, -10, 0],
                       }}
-                      transition={{ duration: 0.6 }}
-                    />
-                    <motion.div 
-                      className="h-3 bg-gray-200 rounded w-3/4 mb-2"
-                      initial={{ width: 0 }}
-                      animate={{ width: '75%' }}
-                      transition={{ delay: 0.6 + item * 0.1, duration: 0.5 }}
-                    />
-                    <motion.div 
-                      className="h-2 bg-gray-100 rounded w-1/2"
-                      initial={{ width: 0 }}
-                      animate={{ width: '50%' }}
-                      transition={{ delay: 0.8 + item * 0.1, duration: 0.5 }}
-                    />
+                      transition={{ duration: 0.5 }}
+                    >
+                      {tech.icon}
+                    </motion.span>
+                    <span className="text-white text-sm font-medium">{tech.name}</span>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
+
+            {/* Animated Tech Icons Grid */}
+            <motion.div
+              className="grid grid-cols-4 gap-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+            >
+              {techStack.slice(0, 4).map((tech, index) => (
+                <motion.div
+                  key={tech.name}
+                  className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-4 border border-gray-700 flex flex-col items-center justify-center cursor-pointer group"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1 + index * 0.1, type: 'spring', stiffness: 200 }}
+                  whileHover={{
+                    scale: 1.1,
+                    y: -5,
+                    borderColor: '#0ea5e9',
+                    boxShadow: '0 0 25px rgba(14, 165, 233, 0.4)',
+                  }}
+                >
+                  <motion.div
+                    className="text-4xl mb-2"
+                    whileHover={{
+                      scale: 1.3,
+                      rotate: 360,
+                    }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    {tech.icon}
+                  </motion.div>
+                  <span className="text-white text-xs font-medium">{tech.name}</span>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2 }}
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className="text-white/60"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </motion.div>
+      </motion.div>
     </section>
   )
 }
-

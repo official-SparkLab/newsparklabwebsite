@@ -10,6 +10,8 @@ import ProcessFlow from '@/components/home/ProcessFlow'
 import Testimonials from '@/components/home/Testimonials'
 import Blogs from '@/components/home/Blogs'
 import CTASection from '@/components/home/CTASection'
+import ProblemSolutionCards from '@/components/home/ProblemSolutionCards'
+import TechByteOfTheDay from '@/components/common/TechByteOfTheDay'
 
 export const metadata = {
   title: 'SparkLab - Enterprise IT Solutions & Software Development',
@@ -19,17 +21,46 @@ export const metadata = {
 export default function Home() {
   return (
     <>
+      {/* 1. Hero Section - First Impression & Value Proposition */}
       <HeroSection />
-      <AboutSparklab />
-      <ServicesOverview />
-      <ProductsOverview />
-      <Counters />
-      <WhyChooseUs />
-      <ProcessFlow />
-      <CaseStudies />
-      <Testimonials />
+      
+      {/* 2. Trusted By - Immediate Social Proof (Logos) */}
       <TrustedBy />
+      
+      {/* 3. Problem Solution Cards - Show Value & Learning */}
+      <ProblemSolutionCards />
+      
+      {/* 4. Services Overview - What We Offer */}
+      <ServicesOverview />
+      
+      {/* 5. Products Overview - Our Products/Solutions */}
+      <ProductsOverview />
+      
+      {/* 6. Why Choose Us - Competitive Advantages */}
+      <WhyChooseUs />
+      
+      {/* 7. Process Flow - How We Work */}
+      <ProcessFlow />
+      
+      {/* 8. Counters - Proof Through Numbers */}
+      <Counters />
+      
+      {/* 9. About SparkLab - Who We Are */}
+      <AboutSparklab />
+      
+      {/* 10. Case Studies - Success Stories & Social Proof */}
+      <CaseStudies />
+      
+      {/* 11. Testimonials - Customer Voices */}
+      <Testimonials />
+      
+      {/* 12. Tech Byte of the Day - Daily Engagement */}
+      <TechByteOfTheDay />
+      
+      {/* 13. Blogs - Content Marketing & Thought Leadership */}
       <Blogs />
+      
+      {/* 14. CTA Section - Final Conversion Point */}
       <CTASection />
     </>
   )
