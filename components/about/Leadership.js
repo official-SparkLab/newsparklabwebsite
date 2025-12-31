@@ -8,21 +8,25 @@ export default function Leadership() {
       name: 'John Anderson',
       role: 'Chief Executive Officer',
       bio: '20+ years of experience in technology leadership and business strategy.',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
     },
     {
       name: 'Sarah Mitchell',
       role: 'Chief Technology Officer',
       bio: 'Expert in cloud architecture and enterprise software solutions.',
+      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face',
     },
     {
       name: 'David Chen',
       role: 'Chief Operating Officer',
       bio: 'Specialized in operational excellence and global delivery.',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face',
     },
     {
       name: 'Emily Rodriguez',
       role: 'VP of Engineering',
       bio: 'Passionate about innovation and building high-performing teams.',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face',
     },
   ]
 
@@ -51,10 +55,12 @@ export default function Leadership() {
               }}
               className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow text-center"
             >
-              <div className="w-24 h-24 bg-gradient-to-br from-primary-500 to-primary-700 rounded-full mx-auto mb-4 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
-                <span className="text-white font-bold text-2xl">
-                  {leader.name.charAt(0)}
-                </span>
+              <div className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden shadow-md group-hover:scale-110 transition-transform duration-300 ring-4 ring-primary-100">
+                <img 
+                  src={leader.image} 
+                  alt={leader.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">
                 {leader.name}

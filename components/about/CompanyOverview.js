@@ -44,8 +44,9 @@ export default function CompanyOverview() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-xl p-8 shadow-lg"
+            className="relative"
           >
+            <div className="bg-white rounded-xl p-8 shadow-lg mb-6">
             <div className="grid grid-cols-2 gap-6">
               {stats.map((stat, index) => (
                 <motion.div
@@ -62,6 +63,14 @@ export default function CompanyOverview() {
                   <div className="text-gray-600 font-medium">{stat.label}</div>
                 </motion.div>
               ))}
+            </div>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-lg">
+              <img 
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop"
+                alt="SparkLab Office"
+                className="w-full h-auto object-cover"
+              />
             </div>
           </motion.div>
         </div>

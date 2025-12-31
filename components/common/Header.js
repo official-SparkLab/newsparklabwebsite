@@ -64,6 +64,7 @@ export default function Header() {
   ]
 
   const resourcesLinks = [
+    { name: 'Code Arena', href: '/code-arena/', icon: '⚔️', description: 'JavaScript coding challenges' },
     { name: 'Innovation Playground', href: '/innovation-playground/', icon: '🎮', description: 'Interactive demos & experiments' },
     { name: 'Code & See', href: '/code-and-see/', icon: '💻', description: 'Live coding playground' },
     { name: 'IT Without Headache', href: '/it-without-headache/', icon: '📚', description: 'Learn IT concepts simply' },

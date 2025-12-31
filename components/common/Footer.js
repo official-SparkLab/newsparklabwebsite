@@ -23,6 +23,7 @@ export default function Footer() {
       { name: 'Industries', href: '/industries/' },
       { name: 'Products', href: '/products/' },
       { name: 'Case Studies', href: '/case-studies/' },
+      { name: 'Code Arena', href: '/code-arena/' },
       { name: 'Innovation Playground', href: '/innovation-playground/' },
       { name: 'Website Readiness Quiz', href: '/website-readiness-quiz/' },
       { name: 'Website Health Check', href: '/website-health-check/' },
@@ -60,23 +61,27 @@ export default function Footer() {
         ))}
       </div>
 
-      <div className="container-custom section-padding relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      <div className="container-custom py-6 md:py-12 lg:py-16 px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-4 sm:mb-6 lg:mb-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="col-span-2 sm:col-span-2 lg:col-span-1"
           >
             <motion.h3 
-              className="text-white text-xl font-bold mb-4"
+              className="text-white text-base sm:text-lg lg:text-xl font-bold mb-2 sm:mb-3 lg:mb-4"
               whileHover={{ scale: 1.05 }}
             >
               SparkLab
             </motion.h3>
-            <p className="text-gray-400 text-sm leading-relaxed">
+            <p className="text-gray-400 text-[10px] sm:text-xs lg:text-sm leading-relaxed hidden sm:block">
               Leading IT solutions provider delivering cutting-edge software
               development and enterprise solutions for businesses worldwide.
+            </p>
+            <p className="text-gray-400 text-[10px] leading-relaxed sm:hidden">
+              Leading IT solutions provider delivering cutting-edge software solutions.
             </p>
           </motion.div>
 
@@ -86,8 +91,8 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="text-white font-semibold mb-4">Company</h4>
-            <ul className="space-y-2">
+            <h4 className="text-white font-semibold mb-2 sm:mb-3 lg:mb-4 text-xs sm:text-sm lg:text-base">Company</h4>
+            <ul className="space-y-1 sm:space-y-1.5 lg:space-y-2">
               {footerLinks.company.map((link, idx) => (
                 <motion.li 
                   key={link.name}
@@ -99,7 +104,7 @@ export default function Footer() {
                   <motion.div whileHover={{ x: 5 }}>
                     <Link
                       href={link.href}
-                      className="text-gray-400 hover:text-accent-400 transition-colors text-sm inline-block"
+                      className="text-gray-400 hover:text-accent-400 transition-colors text-[10px] sm:text-xs lg:text-sm inline-block"
                     >
                       {link.name}
                     </Link>
@@ -115,8 +120,8 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="text-white font-semibold mb-4">Services</h4>
-            <ul className="space-y-2">
+            <h4 className="text-white font-semibold mb-2 sm:mb-3 lg:mb-4 text-xs sm:text-sm lg:text-base">Services</h4>
+            <ul className="space-y-1 sm:space-y-1.5 lg:space-y-2">
               {footerLinks.services.map((link, idx) => (
                 <motion.li 
                   key={link.name}
@@ -128,7 +133,7 @@ export default function Footer() {
                   <motion.div whileHover={{ x: 5 }}>
                     <Link
                       href={link.href}
-                      className="text-gray-400 hover:text-accent-400 transition-colors text-sm inline-block"
+                      className="text-gray-400 hover:text-accent-400 transition-colors text-[10px] sm:text-xs lg:text-sm inline-block"
                     >
                       {link.name}
                     </Link>
@@ -143,9 +148,10 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
+            className="col-span-2 sm:col-span-2 lg:col-span-1"
           >
-            <h4 className="text-white font-semibold mb-4">Resources</h4>
-            <ul className="space-y-2">
+            <h4 className="text-white font-semibold mb-2 sm:mb-3 lg:mb-4 text-xs sm:text-sm lg:text-base">Resources</h4>
+            <ul className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-1 gap-x-2 sm:gap-x-4 gap-y-1 sm:gap-y-1.5 lg:gap-y-2">
               {footerLinks.resources.map((link, idx) => (
                 <motion.li 
                   key={link.name}
@@ -157,7 +163,7 @@ export default function Footer() {
                   <motion.div whileHover={{ x: 5 }}>
                     <Link
                       href={link.href}
-                      className="text-gray-400 hover:text-accent-400 transition-colors text-sm inline-block"
+                      className="text-gray-400 hover:text-accent-400 transition-colors text-[10px] sm:text-xs lg:text-sm inline-block"
                     >
                       {link.name}
                     </Link>
@@ -174,21 +180,21 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mb-8"
+          className="mb-4 sm:mb-6 lg:mb-8"
         >
           <TechByteOfTheDay variant="footer" />
         </motion.div>
 
         <motion.div 
-          className="border-t border-gray-800 pt-8 mt-8"
+          className="border-t border-gray-800 pt-4 sm:pt-6 lg:pt-8 mt-4 sm:mt-6 lg:mt-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0">
             <motion.p 
-              className="text-gray-400 text-sm"
+              className="text-gray-400 text-[10px] sm:text-xs lg:text-sm text-center sm:text-left"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -196,12 +202,12 @@ export default function Footer() {
             >
               © {currentYear} SparkLab. All rights reserved.
             </motion.p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
+            <div className="flex flex-wrap justify-center sm:justify-end gap-3 sm:gap-4 lg:gap-6">
               {['Privacy Policy', 'Terms of Service'].map((text, idx) => (
                 <motion.a
                   key={text}
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors text-sm"
+                  className="text-gray-400 hover:text-white transition-colors text-[10px] sm:text-xs lg:text-sm"
                   initial={{ opacity: 0, x: 10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
