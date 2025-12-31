@@ -13,7 +13,7 @@ export default function Blogs() {
       date: 'March 15, 2024',
       readTime: '5 min read',
       slug: 'ai-transforming-enterprise-software',
-      image: '/api/placeholder/400/250',
+      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop',
     },
     {
       title: 'Cloud Migration Best Practices: A Complete Guide for 2024',
@@ -22,7 +22,7 @@ export default function Blogs() {
       date: 'March 10, 2024',
       readTime: '7 min read',
       slug: 'cloud-migration-best-practices',
-      image: '/api/placeholder/400/250',
+      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop',
     },
     {
       title: 'Digital Transformation: How to Future-Proof Your Business',
@@ -31,7 +31,7 @@ export default function Blogs() {
       date: 'March 5, 2024',
       readTime: '6 min read',
       slug: 'digital-transformation-future-proof',
-      image: '/api/placeholder/400/250',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop',
     },
     {
       title: 'Cybersecurity Trends Every Business Should Know in 2024',
@@ -40,7 +40,7 @@ export default function Blogs() {
       date: 'February 28, 2024',
       readTime: '8 min read',
       slug: 'cybersecurity-trends-2024',
-      image: '/api/placeholder/400/250',
+      image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=250&fit=crop',
     },
   ]
 
@@ -68,7 +68,13 @@ export default function Blogs() {
                 href={`/blog/${blog.slug}/`}
                 className="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-primary-300 h-full"
               >
-                <div className="relative h-48 bg-gradient-to-br from-primary-100 to-primary-200 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={blog.image} 
+                    alt={blog.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30"></div>
                   <div className="absolute top-4 left-4">
                     <span className="inline-block px-3 py-1 bg-white/90 rounded-full text-xs font-semibold text-primary-700">
                       {blog.category}

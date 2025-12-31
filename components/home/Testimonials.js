@@ -13,7 +13,7 @@ export default function Testimonials() {
       profession: 'CTO',
       company: 'TechCorp Global',
       rating: 5,
-      image: '/api/placeholder/80/80',
+      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face',
     },
     {
       quote:
@@ -22,7 +22,7 @@ export default function Testimonials() {
       profession: 'VP Engineering',
       company: 'InnovateLabs',
       rating: 5,
-      image: '/api/placeholder/80/80',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
     },
     {
       quote:
@@ -31,7 +31,7 @@ export default function Testimonials() {
       profession: 'Director of IT',
       company: 'FinanceHub',
       rating: 5,
-      image: '/api/placeholder/80/80',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face',
     },
     {
       quote:
@@ -40,7 +40,7 @@ export default function Testimonials() {
       profession: 'CEO',
       company: 'StartupHub',
       rating: 5,
-      image: '/api/placeholder/80/80',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face',
     },
     {
       quote:
@@ -49,7 +49,7 @@ export default function Testimonials() {
       profession: 'Operations Manager',
       company: 'ServicePro',
       rating: 5,
-      image: '/api/placeholder/80/80',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face',
     },
     {
       quote:
@@ -58,7 +58,7 @@ export default function Testimonials() {
       profession: 'CTO',
       company: 'Enterprise Solutions Inc',
       rating: 5,
-      image: '/api/placeholder/80/80',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face',
     },
   ]
 

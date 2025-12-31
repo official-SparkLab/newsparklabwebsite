@@ -46,10 +46,30 @@ export default function ProductDetail({ product }) {
   ]
 
   const screenshots = [
-    { id: 1, title: 'Dashboard Overview', description: 'Main dashboard with key metrics' },
-    { id: 2, title: 'Analytics View', description: 'Detailed analytics and reporting' },
-    { id: 3, title: 'Settings Panel', description: 'Configuration and settings' },
-    { id: 4, title: 'User Management', description: 'Team and user management' },
+    { 
+      id: 1, 
+      title: 'Dashboard Overview', 
+      description: 'Main dashboard with key metrics',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop'
+    },
+    { 
+      id: 2, 
+      title: 'Analytics View', 
+      description: 'Detailed analytics and reporting',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop'
+    },
+    { 
+      id: 3, 
+      title: 'Settings Panel', 
+      description: 'Configuration and settings',
+      image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop'
+    },
+    { 
+      id: 4, 
+      title: 'User Management', 
+      description: 'Team and user management',
+      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop'
+    },
   ]
 
   return (
@@ -177,15 +197,17 @@ export default function ProductDetail({ product }) {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="order-2 lg:order-1">
-              <div className="bg-gray-100 rounded-xl p-2 mb-4 aspect-video flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <span className="text-white text-3xl">{product.icon}</span>
-                  </div>
-                  <p className="text-gray-600 font-medium">
+              <div className="bg-gray-100 rounded-xl p-2 mb-4 aspect-video overflow-hidden relative">
+                <img 
+                  src={screenshots[selectedImage].image} 
+                  alt={screenshots[selectedImage].title}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 rounded-b-lg">
+                  <p className="text-white font-medium text-sm">
                     {screenshots[selectedImage].title}
                   </p>
-                  <p className="text-gray-500 text-sm mt-1">
+                  <p className="text-white/80 text-xs mt-1">
                     {screenshots[selectedImage].description}
                   </p>
                 </div>
@@ -195,15 +217,20 @@ export default function ProductDetail({ product }) {
                   <button
                     key={screenshot.id}
                     onClick={() => setSelectedImage(index)}
-                    className={`aspect-video rounded-lg border-2 transition-all ${
+                    className={`aspect-video rounded-lg border-2 transition-all overflow-hidden relative ${
                       selectedImage === index
-                        ? 'border-accent-500 bg-accent-50'
-                        : 'border-gray-200 bg-gray-50 hover:border-accent-300'
+                        ? 'border-accent-500 ring-2 ring-accent-200'
+                        : 'border-gray-200 hover:border-primary-300'
                     }`}
                   >
-                    <div className="w-full h-full flex items-center justify-center">
-                      <span className="text-2xl">{product.icon}</span>
-                    </div>
+                    <img 
+                      src={screenshot.image} 
+                      alt={screenshot.title}
+                      className="w-full h-full object-cover"
+                    />
+                    {selectedImage === index && (
+                      <div className="absolute inset-0 bg-accent-500/20"></div>
+                    )}
                   </button>
                 ))}
               </div>

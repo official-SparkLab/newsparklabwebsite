@@ -82,17 +82,17 @@ export default function TechByteOfTheDay({ variant = 'default' }) {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-gradient-to-r from-primary-600 to-accent-600 text-white p-4 rounded-lg"
+        className="bg-gradient-to-r from-primary-600 to-accent-600 text-white p-2 sm:p-3 lg:p-4 rounded-lg"
       >
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1.5 sm:gap-2 lg:gap-3">
           <div className="flex-shrink-0">
-            <span className="text-2xl">💡</span>
+            <span className="text-lg sm:text-xl lg:text-2xl">💡</span>
           </div>
-          <div className="flex-1">
-            <div className="text-xs font-semibold uppercase tracking-wider mb-1 opacity-90">
+          <div className="flex-1 min-w-0">
+            <div className="text-[9px] sm:text-[10px] lg:text-xs font-semibold uppercase tracking-wider mb-0.5 sm:mb-1 opacity-90">
               Tech Byte of the Day
             </div>
-            <div className="text-sm leading-relaxed">
+            <div className="text-[10px] sm:text-xs lg:text-sm leading-tight sm:leading-relaxed">
               {currentTip}
             </div>
           </div>
